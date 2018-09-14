@@ -36,32 +36,46 @@ namespace Grupp1Sudoku
             }
 
             //Search the block
+            int blockX = cellX / 3;
+            int blockY = cellY / 3;
 
+            //hitta block koordinater
+            for (int y = blockY*3; y < (blockY*3) + 3; y++)
+            {
+                for (int x = blockX*3; x < (blockX*3) + 3; x++)
+                {
+                    int cellVal = board[y, x];
+                    if (cellVal != 0)
+                    {
+                        eliminatedNumbers[cellVal - 1] = true;
+                    }
+                }
+               
+            }
+            int trueCount = 0;
+
+            foreach(bool b in eliminatedNumbers)
+            {
+                if(b == true)
+                {
+                    trueCount++;
+                }
+            }
+
+            if(trueCount == 8)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    if(eliminatedNumbers[i] == false)
+                    {
+                        return i + 1; 
+                    }
+
+                }
+            }         
             return 0;
 
         }
-
-//        Public int HittaSiffrorPåRadKolumnBlock(x, y)
-
-//    Skapa ett minne = [f, f, f, f, f, f, f, f, f]
-//        Loopar genom rad
-//            Läser siffran
-//            Om inte 0
-//			Ändra dess index till true (Akta för OBOE)
-
-//    Likadant för kolumn
-//Hitta block-koordinater
-//Loopa igenom block X
-//Loopa igenom block Y
-//Läs siffran
-//Om inte 0
-//Ändra dess index till true (oboe)
-//Skapa Int false-räknare = 9
-//Loopa igenom minnesarrayen
-//Om false-räknare ==1
-//		Loopa igenom minnesarray igen
-
-
 
         public void Solve() {
 
