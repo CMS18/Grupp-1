@@ -15,6 +15,8 @@ namespace Grupp1Sudoku
                                      "008102900700000008006708200" +
                                      "002609500800203009005010300");
 
+            game.PrintSudoku();
+
             Console.ReadLine(); 
         }
 

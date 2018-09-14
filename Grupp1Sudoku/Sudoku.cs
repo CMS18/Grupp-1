@@ -28,7 +28,39 @@ namespace Grupp1Sudoku
             return newboard;
         }
 
+        public void PrintSudoku()
+        {
+            for (int y = 0; y < board.GetLength(1); y++) //For-loop för kolumnen
+            {
+                if (y % 3 == 0)
+                {
+                    Console.WriteLine("-------------------------"); //Skriv ut strecksrad
+                }
+
+                for (int x = 0; x < board.GetLength(0); x++) //For-loop för raden
+                {
+                    if (x % 3 == 0)
+                    {
+                        Console.Write("| ");
+                    }
+                    if (board[y, x] == 0)
+                    {
+                        Console.Write("  ");
+                    }
+                    else
+                    {
+                        Console.Write(board[y, x]+" ");    //Annars: Skriv ut siffran
+                    }
+                }
+                Console.Write("|\n");
+            }
+            Console.WriteLine("-------------------------"); //Skriv ut understrecksrad
+        }
 
 
     }
+
+
+
+
 }
