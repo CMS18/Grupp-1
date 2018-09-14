@@ -49,11 +49,13 @@ namespace Grupp1Sudoku
                     }
                     else
                     {
-                        Console.Write(board[y, x]+" ");    //Annars: Skriv ut siffran
+                        Console.Write(board[y, x] + " ");    //Annars: Skriv ut siffran
                     }
                 }
                 Console.Write("|\n");
             }
+            Console.WriteLine("-------------------------"); //Skriv ut understrecksrad
+
             Console.WriteLine("-------------------------"); //Skriv ut understrecksrad
         }
 
