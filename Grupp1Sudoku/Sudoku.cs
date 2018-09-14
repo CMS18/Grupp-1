@@ -14,6 +14,69 @@ namespace Grupp1Sudoku
             board = TransformStringToArray(input);
         }
 
+        public int FindOnlyPossibleNumber(int cellX, int cellY) {
+           
+            
+            bool[] eliminatedNumbers = new bool[9];
+
+            //Search the row
+            for (int x = 0; x < 9; x++) {
+                int cellVal = board[cellY, x];
+                if (cellVal != 0) {
+                    eliminatedNumbers[cellVal - 1] = true;
+                }
+            }
+
+            //Search the column
+            for (int y = 0; y < 9; y++) {
+                int cellVal = board[y, cellX];
+                if (cellVal != 0) {
+                    eliminatedNumbers[cellVal - 1] = true;
+                }
+            }
+
+            //Search the block
+
+            return 0;
+
+        }
+
+//        Public int HittaSiffrorPåRadKolumnBlock(x, y)
+
+//    Skapa ett minne = [f, f, f, f, f, f, f, f, f]
+//        Loopar genom rad
+//            Läser siffran
+//            Om inte 0
+//			Ändra dess index till true (Akta för OBOE)
+
+//    Likadant för kolumn
+//Hitta block-koordinater
+//Loopa igenom block X
+//Loopa igenom block Y
+//Läs siffran
+//Om inte 0
+//Ändra dess index till true (oboe)
+//Skapa Int false-räknare = 9
+//Loopa igenom minnesarrayen
+//Om false-räknare ==1
+//		Loopa igenom minnesarray igen
+
+
+
+        public void Solve() {
+
+        }
+//        Loopa tills färdig
+//Loopa igenom alla celler(med nästlade for-loopar)
+//Om cellen är tom(siffran 0)
+
+//    HittaSiffrorPåRadKolumnBlock(x, y)
+//Om dess rad/kolumn/block bara lämnar ett alternativ kvar
+//fyll i den siffran..
+//Lyckades programmet inte fylla i en enda cell denna vändan?
+//Om alla är fylllda - Vinst.Om det finns tomma kvar - Förlust/Olösbar.
+//Skriv ut den lösta sudokun, eller så långt man kom om den inte är löst.
+ 
         private int[,] TransformStringToArray(string input)
         {
             int[,] newboard = new int[9, 9];  //Skapa en array[9, 9]
@@ -56,7 +119,6 @@ namespace Grupp1Sudoku
             }
             Console.WriteLine("-------------------------"); //Skriv ut understrecksrad
 
-            Console.WriteLine("-------------------------"); //Skriv ut understrecksrad
         }
 
 
