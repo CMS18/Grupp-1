@@ -94,18 +94,18 @@ namespace Grupp1Sudoku
         private int[,] TransformStringToArray(string input)
         {
             int[,] newboard = new int[9, 9];  //Skapa en array[9, 9]
-            for (int y = 0; y < newboard.GetLength(1); y++) // For loop Y
+            for (int row = 0; row < newboard.GetLength(1); row++) // For loop Y
             {
-                for (int x = 0; x < newboard.GetLength(0); x++)//For loop X
+                for (int col = 0; col < newboard.GetLength(0); col++)//For loop X
                 {
-                    newboard[y, x] = int.Parse(input[x + (y * 9)].ToString());
+                    newboard[row, col] = int.Parse(input[col + (row * 9)].ToString());
                 }
             }
 
             return newboard;
         }
 
-        public void PrintSudoku()
+        public void PrintSudoku() 
         {
             for (int y = 0; y < board.GetLength(1); y++) //For-loop för kolumnen
             {
