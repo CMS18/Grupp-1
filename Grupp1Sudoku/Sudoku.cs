@@ -14,7 +14,7 @@ namespace Grupp1Sudoku
             board = TransformStringToArray(input);
         }
 
-        public int FindOnlyPossibleNumber(int cellX, int cellY) {
+        public int FindOnlyPossibleNumber(int cellY, int cellX  ) {
            
             
             bool[] eliminatedNumbers = new bool[9];
