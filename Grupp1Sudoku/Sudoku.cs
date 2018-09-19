@@ -78,7 +78,19 @@ namespace Grupp1Sudoku
         }
 
         public void Solve() {
-
+            do
+            {
+                for (int row = 0; row < 9; row++)
+                {
+                    for (int col = 0; col < 9; col++)
+                    {
+                        if (board[row, col]==0)
+                        {
+                            
+                        }
+                    }
+                }
+            } while (true);
         }
 //        Loopa tills färdig
 //Loopa igenom alla celler(med nästlade for-loopar)
