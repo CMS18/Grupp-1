@@ -16,7 +16,7 @@ namespace Grupp1Sudoku
             //                         "002609500800203009005010300");
             Sudoku game = new Sudoku("060001020970820400035004001604000018007000200820000605700900130002067094040500080");
             game.PrintSudoku();
-            Console.WriteLine(game.FindOnlyPossibleNumber(7,6));
+            game.Solve();
 
             Console.ReadLine(); 
         }

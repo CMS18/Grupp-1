@@ -14,23 +14,28 @@ namespace Grupp1Sudoku
             board = TransformStringToArray(input);
         }
 
-        public int FindOnlyPossibleNumber(int cellY, int cellX  ) {
-           
-            
+        public int FindOnlyPossibleNumber(int cellY, int cellX)
+        {
+
+
             bool[] eliminatedNumbers = new bool[9];
 
             //Search the row
-            for (int x = 0; x < 9; x++) {
+            for (int x = 0; x < 9; x++)
+            {
                 int cellVal = board[cellY, x];
-                if (cellVal != 0) {
+                if (cellVal != 0)
+                {
                     eliminatedNumbers[cellVal - 1] = true;
                 }
             }
 
             //Search the column
-            for (int y = 0; y < 9; y++) {
+            for (int y = 0; y < 9; y++)
+            {
                 int cellVal = board[y, cellX];
-                if (cellVal != 0) {
+                if (cellVal != 0)
+                {
                     eliminatedNumbers[cellVal - 1] = true;
                 }
             }
@@ -40,9 +45,9 @@ namespace Grupp1Sudoku
             int blockY = cellY / 3;
 
             //hitta block koordinater
-            for (int y = blockY*3; y < (blockY*3) + 3; y++)
+            for (int y = blockY * 3; y < (blockY * 3) + 3; y++)
             {
-                for (int x = blockX*3; x < (blockX*3) + 3; x++)
+                for (int x = blockX * 3; x < (blockX * 3) + 3; x++)
                 {
                     int cellVal = board[y, x];
                     if (cellVal != 0)
@@ -50,59 +55,73 @@ namespace Grupp1Sudoku
                         eliminatedNumbers[cellVal - 1] = true;
                     }
                 }
-               
+
             }
             int trueCount = 0;
 
-            foreach(bool b in eliminatedNumbers)
+            foreach (bool b in eliminatedNumbers)
             {
-                if(b == true)
+                if (b == true)
                 {
                     trueCount++;
                 }
             }
 
-            if(trueCount == 8)
+            if (trueCount == 8)
             {
                 for (int i = 0; i < 9; i++)
                 {
-                    if(eliminatedNumbers[i] == false)
+                    if (eliminatedNumbers[i] == false)
                     {
-                        return i + 1; 
+                        return i + 1;
                     }
 
                 }
-            }         
+            }
             return 0;
 
         }
 
-        public void Solve() {
+        public void Solve()
+        {
+
+            bool filledAnyCell;
+
             do
+
             {
+                filledAnyCell = false;
+
                 for (int row = 0; row < 9; row++)
                 {
                     for (int col = 0; col < 9; col++)
                     {
-                        if (board[row, col]==0)
+                        if (board[row, col] == 0)
                         {
-                            
+
+                            int newCellValue = FindOnlyPossibleNumber(row, col);
+                            if (newCellValue != 0)
+                            {
+                                board[row, col] = newCellValue;
+                                filledAnyCell = true;
+
+                            }
+
                         }
                     }
                 }
-            } while (true);
-        }
-//        Loopa tills färdig
-//Loopa igenom alla celler(med nästlade for-loopar)
-//Om cellen är tom(siffran 0)
+            } while (filledAnyCell);
 
-//    HittaSiffrorPåRadKolumnBlock(x, y)
-//Om dess rad/kolumn/block bara lämnar ett alternativ kvar
-//fyll i den siffran..
-//Lyckades programmet inte fylla i en enda cell denna vändan?
-//Om alla är fylllda - Vinst.Om det finns tomma kvar - Förlust/Olösbar.
-//Skriv ut den lösta sudokun, eller så långt man kom om den inte är löst.
- 
+            PrintSudoku();
+        }
+        //        Loopa tills färdig
+        //Loopa igenom alla celler(med nästlade for-loopar)
+        //Om cellen är tom(siffran 0)
+
+        //Lyckades programmet inte fylla i en enda cell denna vändan?
+        //Om alla är fylllda - Vinst.Om det finns tomma kvar - Förlust/Olösbar.
+        //Skriv ut den lösta sudokun, eller så långt man kom om den inte är löst.
+
         private int[,] TransformStringToArray(string input)
         {
             int[,] newboard = new int[9, 9];  //Skapa en array[9, 9]
@@ -117,7 +136,7 @@ namespace Grupp1Sudoku
             return newboard;
         }
 
-        public void PrintSudoku() 
+        public void PrintSudoku()
         {
             for (int y = 0; y < board.GetLength(1); y++) //For-loop för kolumnen
             {
